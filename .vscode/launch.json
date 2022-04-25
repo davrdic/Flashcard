@@ -2,6 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run Browser",
+            "type": "cordova",
+            "request": "launch",
+            "platform": "browser",
+            "target": "chrome",
+            "simulatePort": 8000,
+            "livereload": true,
+            "cwd": "${workspaceFolder}",
+            "sourceMaps": true
+        },
+        {
             "name": "Run Android on emulator",
             "type": "cordova",
             "request": "launch",
