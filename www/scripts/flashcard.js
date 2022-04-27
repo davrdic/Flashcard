@@ -1,8 +1,8 @@
 ﻿
 let currentStateDisplay = document.getElementById('current-state-display');
 let wordDisplay = document.getElementById('word-display');
-let definitionOneDisplay = document.getElementById('definition-display');
-let definitionTwoDisplay = document.getElementById('example-display');
+let definitionOneDisplay = document.getElementById('definition-one-display');
+let definitionTwoDisplay = document.getElementById('definition-two-display');
 let mainMenuButton = document.getElementById('main-menu-button');
 let startGameButton = document.getElementById('start-game');
 let nextWordButton = document.getElementById('next-word-button');
