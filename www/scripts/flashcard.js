@@ -4,13 +4,11 @@ let wordDisplay = document.getElementById('word-display');
 let definitionDisplay = document.getElementById('definition-display');
 let exampleDisplay = document.getElementById('example-display');
 let mainMenuButton = document.getElementById('main-menu-button');
-let deckOneButton = document.getElementById('deck-one');
-let deckTwoButton = document.getElementById('deck-two');
+let startGameButton = document.getElementById('start-game');
 let nextWordButton = document.getElementById('next-word-button');
 let definitionButton = document.getElementById('definition-button');
 
-deckOneButton.style.display = 'inline';
-deckTwoButton.style.display = 'inline';
+startGameButton.style.display = 'inline';
 mainMenuButton.style.display = 'none';
 nextWordButton.style.display = 'none';
 definitionButton.style.display = 'none';
@@ -25,24 +23,14 @@ mainMenuButton.addEventListener('click', function () {
     wordDisplay.style.display = 'none'
     definitionDisplay.style.display = 'none'
     exampleDisplay.style.display = 'none'
-    deckOneButton.style.display = 'inline';
-    deckTwoButton.style.display = 'inline';
+    startGameButton.style.display = 'inline';
     nextWordButton.style.display = 'none';
     definitionButton.style.display = 'none';
     mainMenuButton.style.display = 'none';
 });
 
-deckOneButton.addEventListener('click', function () {
+startGameButton.addEventListener('click', function () {
     GetRandomWord();
-});
-
-deckTwoButton.addEventListener('click', function () {
-    flashcards = createDeckTwo();
-    deckOneButton.style.display = 'none';
-    deckTwoButton.style.display = 'none';
-    nextWordButton.style.display = 'inline';
-    mainMenuButton.style.display = 'inline';
-    currentStateDisplay.innerText = 'Flashcards left: ' + (flashcards.length);
 });
 
 nextWordButton.addEventListener('click', function () {
@@ -87,8 +75,7 @@ function removeFlash(flashcards) {
 
 function setDeckStartDisplay(deck) {
     flashcards = deck;
-    deckOneButton.style.display = 'none';
-    deckTwoButton.style.display = 'none';
+    startGameButton.style.display = 'none';
     nextWordButton.style.display = 'inline';
     mainMenuButton.style.display = 'inline';
     currentStateDisplay.innerText = 'Flashcards left: ' + (flashcards.length);
