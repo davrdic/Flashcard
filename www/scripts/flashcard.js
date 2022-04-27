@@ -1,8 +1,8 @@
 ﻿
 let currentStateDisplay = document.getElementById('current-state-display');
 let wordDisplay = document.getElementById('word-display');
-let definitionDisplay = document.getElementById('definition-display');
-let exampleDisplay = document.getElementById('example-display');
+let definitionOneDisplay = document.getElementById('definition-display');
+let definitionTwoDisplay = document.getElementById('example-display');
 let mainMenuButton = document.getElementById('main-menu-button');
 let startGameButton = document.getElementById('start-game');
 let nextWordButton = document.getElementById('next-word-button');
@@ -15,14 +15,14 @@ definitionButton.style.display = 'none';
 
 currentStateDisplay.innerText = 'Get ready to learn!';
 
-var randomIndex;
+let counter = 0;
 
 mainMenuButton.addEventListener('click', function () {
-    flashcards = [];
+    globalcard = new Card;
     currentStateDisplay.innerText = 'Get ready to learn!';
     wordDisplay.style.display = 'none'
-    definitionDisplay.style.display = 'none'
-    exampleDisplay.style.display = 'none'
+    definitionOneDisplay.style.display = 'none'
+    definitionTwoDisplay.style.display = 'none'
     startGameButton.style.display = 'inline';
     nextWordButton.style.display = 'none';
     definitionButton.style.display = 'none';
@@ -30,24 +30,18 @@ mainMenuButton.addEventListener('click', function () {
 });
 
 startGameButton.addEventListener('click', function () {
+    counter = 0;
     GetRandomWord();
 });
 
 nextWordButton.addEventListener('click', function () {
-    genRanIndex();
-    displayWord();
-    wordDisplay.style.display = 'block'
-    definitionDisplay.style.display = 'none';
-    exampleDisplay.style.display = 'none';
-    nextWordButton.style.display = 'none';
-    definitionButton.style.display = 'inline';
-    currentStateDisplay.innerText = 'Flashcards left: ' + (flashcards.length - 1);
+    GetRandomWord();
 });
 
 definitionButton.addEventListener('click', function () {
     displayDefEx();
-    definitionDisplay.style.display = 'block';
-    exampleDisplay.style.display = 'block';
+    definitionOneDisplay.style.display = 'block';
+    definitionTwoDisplay.style.display = 'block';
     definitionButton.style.display = 'none';
     nextWordButton.style.display = 'inline';
     removeFlash(flashcards);
@@ -61,22 +55,27 @@ function genRanIndex() {
 }
 
 function displayWord() {
-    wordDisplay.innerText = flashcards[randomIndex].name;
+    wordDisplay.innerText = globalcard.name;
 }
 
 function displayDefEx() {
-    definitionDisplay.innerText = flashcards[randomIndex].definition;
-    exampleDisplay.innerText = flashcards[randomIndex].example;
+    definitionOneDisplay.innerText = globalcard.definitionone;
+    definitionTwoDisplay.innerText = globalcard.definitiontwo;
 }
 
 function removeFlash(flashcards) {
     flashcards.splice(randomIndex, 1);
 }
 
-function setDeckStartDisplay(deck) {
-    flashcards = deck;
+function setCardWordDisplay(card) {
+    globalcard = card;
+    displayWord();
     startGameButton.style.display = 'none';
-    nextWordButton.style.display = 'inline';
+    wordDisplay.style.display = 'block'
+    definitionOneDisplay.style.display = 'none';
     mainMenuButton.style.display = 'inline';
-    currentStateDisplay.innerText = 'Flashcards left: ' + (flashcards.length);
+    definitionTwoDisplay.style.display = 'none';
+    nextWordButton.style.display = 'none';
+    definitionButton.style.display = 'inline';
+    currentStateDisplay.innerText = 'Word Count: ' + ++counter;
 }

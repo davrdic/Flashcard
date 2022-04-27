@@ -33,10 +33,11 @@ function getDefinition(word) {
 
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
-        var definition = data[0].shortdef[0];
+        var definitionone = data[0].shortdef[0];
+        let definitiontwo = data[0].shortdef[1];
         if (request.status >= 200 && request.status < 400) {
-            var deck = createDeckOne(word, definition);
-            setDeckStartDisplay(deck);
+            var card = createNewCard(word, definitionone, definitiontwo);
+            setCardWordDisplay(card);
 
         } else {
             const errorMessage = document.createElement('marquee');
